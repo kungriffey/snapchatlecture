@@ -28,6 +28,18 @@ class UserTableViewController: UITableViewController, UINavigationControllerDele
     imageSend["receiver"] = userArray[activeUser]
     imageSend.save()
   }
+  
+  //  Selecting an Image from the Photo Library
+  func  pickImage(sender:AnyObject) {
+    var image = UIImagePickerController()
+    image.delegate = self
+    //image.sourceType = UIImagePickerControllerSourceType.Camera
+    image.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+    image.allowsEditing = false
+    
+    self.presentViewController(image, animated: true, completion: nil)
+
+  }
 
     override func viewDidLoad() {
         super.viewDidLoad()
