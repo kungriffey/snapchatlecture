@@ -67,6 +67,11 @@ class UserTableViewController: UITableViewController, UINavigationControllerDele
   
   func checkForMessages() {
     println("Checking for messages")
+    // Set up a Query on the Image Class
+    var query = PFQuery(className: "Image")
+    // Get the User 
+    query.whereKey("receiver", equalTo: PFUser.currentUser()!.username!)
+    
   }
 
     override func didReceiveMemoryWarning() {
@@ -87,6 +92,11 @@ class UserTableViewController: UITableViewController, UINavigationControllerDele
         // Return the number of rows in the section.
         return userArray.count
     }
+  
+  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    activeUser = indexPath.row
+    pickImage(self)
+  }
 
   
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

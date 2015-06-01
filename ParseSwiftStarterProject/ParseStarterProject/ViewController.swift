@@ -16,6 +16,7 @@ class ViewController: UIViewController {
       
       if user != nil {
         println("The user is logged in")
+        self.performSegueWithIdentifier("showUsers", sender: self)
       }
       else
       {
@@ -30,6 +31,7 @@ class ViewController: UIViewController {
           
           if error == nil {
             println("user signed up")
+            self.performSegueWithIdentifier("showUsers", sender: self)
           }
           else
           {
