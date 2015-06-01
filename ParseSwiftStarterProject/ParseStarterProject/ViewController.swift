@@ -21,7 +21,7 @@ class ViewController: UIViewController {
       {
         println("Login Failed")
         
-        //  Set up a new user
+        //  Set up a new user if one does not exist
         
         var user = PFUser()
         user.username = self.userNameTextField.text

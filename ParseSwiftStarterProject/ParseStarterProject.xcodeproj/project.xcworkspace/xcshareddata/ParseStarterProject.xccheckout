@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DED01450-C4F4-4109-ABF3-61938724CCBC</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ParseStarterProject</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>4F50619FCC06FA9B94768239EA3F579AB8834CED</key>
+		<string>https://github.com/kungriffey/snapchatlecture.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ParseSwiftStarterProject/ParseStarterProject.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>4F50619FCC06FA9B94768239EA3F579AB8834CED</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/kungriffey/snapchatlecture.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>4F50619FCC06FA9B94768239EA3F579AB8834CED</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4F50619FCC06FA9B94768239EA3F579AB8834CED</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SnapChatLecture</string>
+		</dict>
+	</array>
+</dict>
+</plist>
