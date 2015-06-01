@@ -8,7 +8,11 @@
 
 import UIKit
 
-class UserTableViewController: UITableViewController {
+class UserTableViewController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+  
+  var userArray:[String] = []
+  var activeUser = 0
+  
 
     override func viewDidLoad() {
         super.viewDidLoad()
