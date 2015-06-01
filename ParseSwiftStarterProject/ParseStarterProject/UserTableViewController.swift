@@ -7,12 +7,27 @@
 //
 
 import UIKit
+import Parse
 
 class UserTableViewController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
   
   var userArray:[String] = []
   var activeUser = 0
+  var messageCount = 0
+  //  timerVariable
+  var timer = NSTimer()
   
+  //  image picker controller
+  func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+    
+    self.dismissViewControllerAnimated(true, completion: nil)
+    //  upload to parse
+    var imageSend = PFObject(className: "Image")
+    imageSend["image"] = PFFile(name: "image.jpg", data: UIImageJPEGRepresentation(image, 0.5))
+    imageSend["sender"] = PFUser.currentUser()?.username
+    imageSend["receiver"] = userArray[activeUser]
+    imageSend.save()
+  }
 
     override func viewDidLoad() {
         super.viewDidLoad()
