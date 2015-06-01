@@ -99,10 +99,33 @@ class UserTableViewController: UITableViewController, UINavigationControllerDele
                     senderUserName = "unknown user"
                   }
                   // Create an Alert View
+                  var alert = UIAlertController(title: "You Have a New Message", message: "Message From \(senderUserName)", preferredStyle: UIAlertControllerStyle.ActionSheet)
                   
+                  alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+                    // load our images
+                    var backgroundView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.height))
+                    backgroundView.backgroundColor = UIColor.blackColor()
+                    backgroundView.alpha = 0.5
+                    backgroundView.tag = 3 //concept of tagging
+                    self.view.addSubview(backgroundView)
+                    // var for displayed image
+                    var displayedImage = UIImageView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.height))
+                    displayedImage.image = photo
+                    displayedImage.tag = 3
+                    displayedImage.contentMode = UIViewContentMode.ScaleAspectFit
+                    self.view.addSubview(displayedImage)
+                    // Delete Property
+                    image.delete()
+                    // Hide the message
+                    self.timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: Selector("hideMessage"), userInfo: nil, repeats: false)
+                    
+                  }))
+                  if self.messageCount == 0 {
+                    self.presentViewController(alert, animated: true, completion: nil)
+                  }
                 }
               })
-              
+              done = true
             }
             
           }
