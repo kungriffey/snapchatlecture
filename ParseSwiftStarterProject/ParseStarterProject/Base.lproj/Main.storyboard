@@ -63,6 +63,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="0vz-h0-QCg">
+                            <rect key="frame" x="-8" y="-9" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Snap Chat Users" id="4gj-oN-Cvf">
+                                    <barButtonItem key="leftBarButtonItem" title="Log Out" id="q5C-jD-Fr6"/>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ROH-s7-t0P">
                                 <autoresizingMask key="autoresizingMask"/>
