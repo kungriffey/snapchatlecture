@@ -8,6 +8,8 @@
 
 import UIKit
 import Parse
+import ParseUI
+
 
 class UserTableViewController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
   
@@ -55,8 +57,6 @@ class UserTableViewController: UITableViewController, UINavigationControllerDele
         }
       
         // Use Timer for reloading image
-      
-      
       timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("checkForMessages"), userInfo: nil, repeats: true)
       
         // Uncomment the following line to preserve selection between presentations
@@ -72,6 +72,18 @@ class UserTableViewController: UITableViewController, UINavigationControllerDele
     var query = PFQuery(className: "Image")
     // Get the User 
     query.whereKey("receiver", equalTo: PFUser.currentUser()!.username!)
+    
+    // Grab the images from the list
+    var images:Void = query.findObjectsInBackgroundWithBlock { (photo, error) -> Void in
+      
+      if (error == nil) {
+        var done = false
+        if let myPhotoObject = photo {
+          var imageView:PFImageView = PFImageView()
+        }
+      }
+      
+    }
     
   }
 
