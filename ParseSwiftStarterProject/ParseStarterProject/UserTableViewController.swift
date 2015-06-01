@@ -36,20 +36,38 @@ class UserTableViewController: UITableViewController, UINavigationControllerDele
     //image.sourceType = UIImagePickerControllerSourceType.Camera
     image.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
     image.allowsEditing = false
-    
     self.presentViewController(image, animated: true, completion: nil)
-
   }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+      
+        var query = PFUser.query()
+        query?.whereKey("username", notEqualTo: PFUser.currentUser()!.username!)
+        var users = query?.findObjects()
+        if let testUser = users {
+          for user in users! {
+            println(user.username)
+            //  reload the tableView
+            tableView.reloadData()
+          }
+        }
+      
+        // Use Timer for reloading image
+      
+      
+      timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("checkForMessages"), userInfo: nil, repeats: true)
+      
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+  
+  func checkForMessages() {
+    println("Checking for messages")
+  }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -61,24 +79,26 @@ class UserTableViewController: UITableViewController, UINavigationControllerDele
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 0
+        return userArray.count
     }
 
-    /*
+  
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
 
-        // Configure the cell...
 
+      cell.textLabel?.text = userArray[indexPath.row]
+      
+      
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.
