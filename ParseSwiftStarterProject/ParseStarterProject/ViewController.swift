@@ -20,6 +20,23 @@ class ViewController: UIViewController {
       else
       {
         println("Login Failed")
+        
+        //  Set up a new user
+        
+        var user = PFUser()
+        user.username = self.userNameTextField.text
+        user.password = "mypass"
+        user.signUpInBackgroundWithBlock({ (succeeded:Bool, error:NSError?) -> Void in
+          
+          if error == nil {
+            println("user signed up")
+          }
+          else
+          {
+            println(error)
+          }
+        })
+        
       }
       
     }
