@@ -49,6 +49,7 @@ class UserTableViewController: UITableViewController, UINavigationControllerDele
           for user in users! {
             println(user.username)
             //  reload the tableView
+            userArray.append(user.username!!)
             tableView.reloadData()
           }
         }
