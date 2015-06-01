@@ -122,6 +122,7 @@ class UserTableViewController: UITableViewController, UINavigationControllerDele
                   }))
                   if self.messageCount == 0 {
                     self.presentViewController(alert, animated: true, completion: nil)
+                    messageCount++
                   }
                 }
               })
@@ -134,6 +135,14 @@ class UserTableViewController: UITableViewController, UINavigationControllerDele
       
     }
     
+  }
+  
+  func hideMessage() {
+    for subview in self.view.subviews {
+      if subview.tag == 3 {
+        subview.removeFromSuperview()
+      }
+    }
   }
 
     override func didReceiveMemoryWarning() {
