@@ -80,6 +80,32 @@ class UserTableViewController: UITableViewController, UINavigationControllerDele
         var done = false
         if let myPhotoObject = photo {
           var imageView:PFImageView = PFImageView()
+          for image in myPhotoObject {
+            if let imageFile = image["image"] as? PFFile {
+              //The column is named image so make sure its lower case
+              imageView.file = imageFile
+              imageView.loadInBackground()
+              println(imageView.file)
+              
+              imageView.loadInBackground({ (photo, error) -> Void in
+                
+                if error == nil {
+                  var senderUserName = ""
+                  if image["sender"] != nil {
+                    senderUserName = image["sender"] as! String
+                  }
+                  else
+                  {
+                    senderUserName = "unknown user"
+                  }
+                  // Create an Alert View
+                  
+                }
+              })
+              
+            }
+            
+          }
         }
       }
       
