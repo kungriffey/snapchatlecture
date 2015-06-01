@@ -122,7 +122,7 @@ class UserTableViewController: UITableViewController, UINavigationControllerDele
                   }))
                   if self.messageCount == 0 {
                     self.presentViewController(alert, animated: true, completion: nil)
-                    messageCount++
+                    self.messageCount++
                   }
                 }
               })

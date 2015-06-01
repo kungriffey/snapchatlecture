@@ -12,7 +12,7 @@ class ViewController: UIViewController {
   @IBOutlet weak var userNameTextField: UITextField!
   @IBAction func submitButtonPressed(sender: AnyObject) {
     //  Login User
-    PFUser.logInWithUsernameInBackground(self.userNameTextField.text, password: "myPass") { (user:PFUser?, error:NSError?) -> Void in
+    PFUser.logInWithUsernameInBackground(self.userNameTextField.text, password: "mypass") { (user:PFUser?, error:NSError?) -> Void in
       
       if user != nil {
         println("The user is logged in")
@@ -21,9 +21,7 @@ class ViewController: UIViewController {
       else
       {
         println("Login Failed")
-        
         //  Set up a new user if one does not exist
-        
         var user = PFUser()
         user.username = self.userNameTextField.text
         user.password = "mypass"
@@ -38,9 +36,7 @@ class ViewController: UIViewController {
             println(error)
           }
         })
-        
       }
-      
     }
   }
     override func viewDidLoad() {
