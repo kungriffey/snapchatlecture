@@ -102,12 +102,13 @@ class UserTableViewController: UITableViewController, UINavigationControllerDele
                   var alert = UIAlertController(title: "You Have a New Message", message: "Message From \(senderUserName)", preferredStyle: UIAlertControllerStyle.ActionSheet)
                   
                   alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
-                    // load our images
+                    /* load our images
                     var backgroundView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.height))
                     backgroundView.backgroundColor = UIColor.blackColor()
                     backgroundView.alpha = 0.5
                     backgroundView.tag = 3 //concept of tagging
-                    self.view.addSubview(backgroundView)
+                    self.view.addSubview(backgroundView) */
+                    self.createImageView(CGRectMake(0, 0, self.view.frame.width, self.view.frame.height), colour: UIColor.blackColor(), alphaValue: 0.5, tagValue: 3)
                     // var for displayed image
                     var displayedImage = UIImageView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.height))
                     displayedImage.image = photo
@@ -136,6 +137,16 @@ class UserTableViewController: UITableViewController, UINavigationControllerDele
     }
     
   }
+  
+  func createImageView(viewSize:CGRect, colour:UIColor, alphaValue:CGFloat, tagValue:Int) -> Void {
+    
+    var backgroundView = UIImageView(frame: viewSize)
+    backgroundView.backgroundColor = colour
+    backgroundView.alpha = alphaValue
+    backgroundView.tag = tagValue
+    self.view.addSubview(backgroundView)
+  }
+  
   
   func hideMessage() {
     for subview in self.view.subviews {

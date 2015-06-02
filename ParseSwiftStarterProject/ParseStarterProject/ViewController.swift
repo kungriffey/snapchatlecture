@@ -10,6 +10,7 @@ import Parse
 class ViewController: UIViewController {
 
   @IBOutlet weak var userNameTextField: UITextField!
+  
   @IBAction func submitButtonPressed(sender: AnyObject) {
     //  Login User
     PFUser.logInWithUsernameInBackground(self.userNameTextField.text, password: "mypass") { (user:PFUser?, error:NSError?) -> Void in
