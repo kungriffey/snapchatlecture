@@ -12,37 +12,12 @@ class ViewController: UIViewController {
   @IBOutlet weak var userNameTextField: UITextField!
   
   @IBAction func submitButtonPressed(sender: AnyObject) {
-    //  Login User
-    PFUser.logInWithUsernameInBackground(self.userNameTextField.text, password: "mypass") { (user:PFUser?, error:NSError?) -> Void in
-      
-      if user != nil {
-        println("The user is logged in")
-        self.performSegueWithIdentifier("showUsers", sender: self)
       }
-      else
-      {
-        println("Login Failed")
-        //  Set up a new user if one does not exist
-        var user = PFUser()
-        user.username = self.userNameTextField.text
-        user.password = "mypass"
-        user.signUpInBackgroundWithBlock({ (succeeded:Bool, error:NSError?) -> Void in
-          
-          if error == nil {
-            println("user signed up")
-            self.performSegueWithIdentifier("showUsers", sender: self)
-          }
-          else
-          {
-            println(error)
-          }
-        })
-      }
-    }
-  }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        var newUser = User(name: self.userNameTextField.text, pass: "mypass")
+        
     }
 
     override func didReceiveMemoryWarning() {
