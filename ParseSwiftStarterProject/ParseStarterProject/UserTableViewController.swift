@@ -18,6 +18,10 @@ class UserTableViewController: UITableViewController, UINavigationControllerDele
   var messageCount = 0
   //  timerVariable
   var timer = NSTimer()
+  var imageView = ImageView()
+  //  background view
+  var backgroundView:UIImageView?
+  
   
   //  image picker controller
   func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
@@ -43,6 +47,11 @@ class UserTableViewController: UITableViewController, UINavigationControllerDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
+      
+      
+      //background image view
+      backgroundView = imageView.createImageView(CGRectMake(0, 0, self.view.frame.width, self.view.frame.height), colour: UIColor.blackColor(), alphaValue: 0.5, tagValue: 3)
+      
       
         var query = PFUser.query()
         query?.whereKey("username", notEqualTo: PFUser.currentUser()!.username!)
@@ -102,19 +111,18 @@ class UserTableViewController: UITableViewController, UINavigationControllerDele
                   var alert = UIAlertController(title: "You Have a New Message", message: "Message From \(senderUserName)", preferredStyle: UIAlertControllerStyle.ActionSheet)
                   
                   alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
-                    /* load our images
-                    var backgroundView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.height))
-                    backgroundView.backgroundColor = UIColor.blackColor()
-                    backgroundView.alpha = 0.5
-                    backgroundView.tag = 3 //concept of tagging
-                    self.view.addSubview(backgroundView) */
-                    self.createImageView(CGRectMake(0, 0, self.view.frame.width, self.view.frame.height), colour: UIColor.blackColor(), alphaValue: 0.5, tagValue: 3)
+
+                    // background images view
+                    self.view.addSubview(self.backgroundView!)
+                    
                     // var for displayed image
-                    var displayedImage = UIImageView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.height))
+                    //self.createImageView(CGRectMake(0, 0, self.view.frame.width, self.view.frame.height), colour: UIColor.clearColor(), alphaValue: 1, tagValue: 3, image: photo!)
+                    
+                    /*var displayedImage = UIImageView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.height))
                     displayedImage.image = photo
                     displayedImage.tag = 3
                     displayedImage.contentMode = UIViewContentMode.ScaleAspectFit
-                    self.view.addSubview(displayedImage)
+                    self.view.addSubview(displayedImage) */
                     // Delete Property
                     image.delete()
                     // Hide the message
@@ -147,6 +155,15 @@ class UserTableViewController: UITableViewController, UINavigationControllerDele
     self.view.addSubview(backgroundView)
   }
   
+  
+  func createImageView(viewSize:CGRect, colour:UIColor, alphaValue:CGFloat, tagValue:Int, image:UIImage) -> Void {
+    var backgroundView = UIImageView(frame: viewSize)
+    backgroundView.backgroundColor = colour
+    backgroundView.alpha = alphaValue
+    backgroundView.tag = tagValue
+    backgroundView.image = image
+    self.view.addSubview(backgroundView)
+  }
   
   func hideMessage() {
     for subview in self.view.subviews {
